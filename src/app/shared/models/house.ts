@@ -1,4 +1,4 @@
-export interface House {
+export interface IHouse {
   id: Number;
   type: String;
   links: {
@@ -15,6 +15,5 @@ export interface House {
   };
 }
 
-export interface Response {
-  data: [House];
-}
+export interface HouseResponse extends IHouse {}
+export interface House extends IHouse {}

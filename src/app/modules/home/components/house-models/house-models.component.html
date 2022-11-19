@@ -1,0 +1,39 @@
+<div class="house_models">
+  <div class="house_models__media">
+    <div class="house_models__media__left">
+      <h1 class="media__title">{{ houseModels?.attributes?.media?.title }}</h1>
+      <p class="media__descriptions">
+        {{ houseModels?.attributes?.media?.description }}
+      </p>
+    </div>
+    <div class="house_models__media__right">
+      <img
+        style="max-width: 500px"
+        [src]="houseModels?.attributes?.media?.banner"
+        alt="1111"
+      />
+    </div>
+  </div>
+  <div class="house_models__house-listing">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">House Number</th>
+          <th scope="col">Block Number</th>
+          <th scope="col">Land Number</th>
+          <th scope="col">Price</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of houseModels?.houses">
+          <td>{{ item.attributes.house_number }}</td>
+          <td>{{ item.attributes.block_number }}</td>
+          <td>{{ item.attributes.land_number }}</td>
+          <td>{{ item.attributes.price }}</td>
+          <td>Edit</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

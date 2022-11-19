@@ -1,0 +1,20 @@
+:host {
+    .house_models{
+        padding: 20px;
+        &__media{
+            display: flex;
+            &__left{
+                flex: 1;
+            
+            }
+            &__right{
+                flex: 1;
+            }
+            margin-bottom: 20px;
+        }
+        &__house-listing{
+
+        }
+        
+    }
+}

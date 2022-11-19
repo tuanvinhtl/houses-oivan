@@ -8,7 +8,12 @@ export enum Type {
 }
 
 export interface Attributes {
-  username: String;
-  password: String;
-  token?: String;
+  username: string;
+  password: string;
+  token: string;
+}
+
+export interface AuthResponse extends Auth {}
+export interface AuthRequest {
+  data: Auth;
 }

@@ -1,10 +1,12 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+<form #f="ngForm" class="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Oivan Vietnam</h5>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Features</a>
-      <a class="p-2 text-dark" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Enterprise</a>
-      <a class="p-2 text-dark" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Support</a>
-      <a class="p-2 text-dark" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Pricing</a>
+      <div class="input-group" *ngIf="!isAuthenticated">
+        <input type="text" name="username" #username="ngModel" ngModel required class="form-control mr-md-3" placeholder="Username" aria-label="Username">
+        <input type="password" name="password" #password="ngModel" ngModel required class="form-control" placeholder="Password" aria-label="Password">
+      </div>
+      <h6 *ngIf="isAuthenticated" class="mr-md-auto font-weight-normal">Welcome back!</h6>
     </nav>
-    <a class="btn btn-outline-primary" href="https://getbootstrap.com/docs/4.1/examples/pricing/#">Sign up</a>
-  </div>
+    <button *ngIf="!isAuthenticated" class="btn btn-outline-primary" [disabled]="f.invalid" (click)="signIn(f)">Sign in</button>
+    <button *ngIf="isAuthenticated" class="btn btn-outline-primary" (click)="signOut()">Sign out</button>
+</form>

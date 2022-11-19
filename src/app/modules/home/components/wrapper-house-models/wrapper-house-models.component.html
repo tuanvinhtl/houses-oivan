@@ -1,0 +1,8 @@
+<div class="wrapper-house-models">
+  <app-filter class="m-3"></app-filter>
+  <accordion >
+    <group  *ngFor="let item of houseModels" [id]="item.id" [title]="'House model ' + item.id">
+      <app-house-models [houseModels]="item"></app-house-models>
+    </group>
+  </accordion>
+</div>
