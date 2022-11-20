@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
-import { AccordionGroupComponent } from "./components/accordion/accordion-group.component";
 import { AccordionComponent } from "./components/accordion/accordion.component";
 import { FilterComponent } from "./components/filter/filter.component";
 import { HouseModelsComponent } from "./components/house-models/house-models.component";
@@ -24,7 +23,6 @@ const routes: Routes = [
     HouseListingComponent,
     HouseModelsComponent,
     WrapperHouseModelsComponent,
-    AccordionGroupComponent,
     AccordionComponent,
   ],
   imports: [RouterModule.forChild(routes), SharedModule],

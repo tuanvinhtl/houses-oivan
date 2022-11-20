@@ -1,8 +1,20 @@
 <div class="wrapper-house-models">
-  <app-filter class="m-3" [filter]="filter$ | async"  (filterUpdate)="onFilterUpdate($event)"></app-filter>
-  <accordion *ngIf="(houseListing$ | async)?.length !== 0">
-    <group *ngFor="let item of houseListing$ | async" [id]="item.id" [title]="'House model ' + item.id">
-      <app-house-models [houseModels]="item"></app-house-models>
-    </group>
+  <app-filter
+    class="m-3"
+    [filter]="filter$ | async"
+    (filterUpdate)="onFilterUpdate($event)"
+  ></app-filter>
+  <accordion
+    [items]="houseListing$ | async"
+    [accordionTemplateItem]="accordionTemplate"
+    [itemLabelRef]="itemLabel"
+  >
   </accordion>
 </div>
+
+<ng-template #accordionTemplate let-item>
+  <app-house-models [houseModels]="item"></app-house-models>
+</ng-template>
+<ng-template #itemLabel let-item>
+  {{'House model ' + item.id}}
+</ng-template>
