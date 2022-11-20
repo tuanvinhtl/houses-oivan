@@ -7,7 +7,7 @@ export interface IHouse {
   attributes: {
     house_number: String;
     price: Number;
-    block_number: Number;
+    block_number: Number | String;
     land_number: String;
     house_type: String;
     model: String;

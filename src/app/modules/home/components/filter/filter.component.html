@@ -1,15 +1,42 @@
 <form [formGroup]="formGroup" class="d-flex m-0">
   <div class="mb-0 mr-2">
-      <input type="text" formControlName="search" class="form-control form-control-sm" placeholder="Search todo">
+    <select
+      class="form-select form-control form-control-sm"
+      formControlName="blockNumber"
+      aria-label="Default select example"
+      aria-placeholder="Block Number"
+    >
+      <option *ngFor="let item of blockNumberValues" [value]="item">{{item}}</option>
+    </select>
   </div>
-  <div class="d-flex align-items-center" formGroupName="category">
-      <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="filterIsPrivate" formControlName="isPrivate">
-          <label class="form-check-label font-weight-bold text-primary" for="filterIsPrivate">Private</label>
-      </div>
-      <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="filterIsBusiness" formControlName="isBusiness">
-          <label class="form-check-label font-weight-bold text-info" for="filterIsBusiness">Business</label>
-      </div>
+  <div class="mb-0 mr-2">
+    <select
+      class="form-select form-control form-control-sm"
+      formControlName="landNumber"
+      aria-label="Default select example"
+      aria-placeholder="Land Number"
+    >
+      <option *ngFor="let item of landNumberValues" [value]="item">{{item}}</option>
+    </select>
+  </div>
+  <div class="mb-0 mr-2">
+    <select
+      class="form-select form-control form-control-sm"
+      formControlName="minPrice"
+      aria-label="Default select example"
+      aria-placeholder="Min Price"
+    >
+      <option *ngFor="let item of minPriceValues" [value]="item">{{item}}</option>
+    </select>
+  </div>
+  <div class="mb-0 mr-2">
+    <select
+      class="form-select form-control form-control-sm"
+      formControlName="maxPrice"
+      aria-label="Default select example"
+      aria-placeholder="Max Price"
+    >
+      <option *ngFor="let item of maxPriceValues" [value]="item">{{item}}</option>
+    </select>
   </div>
 </form>

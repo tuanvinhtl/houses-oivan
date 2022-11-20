@@ -14,16 +14,16 @@ import { AccordionGroupComponent } from "./accordion-group.component";
 })
 export class AccordionComponent implements AfterContentInit {
   @ContentChildren(AccordionGroupComponent)
-  groups!: QueryList<AccordionGroupComponent>;
+  groups: QueryList<AccordionGroupComponent>;
   ngAfterContentInit() {
     this.groups.toArray()[0].opened = true;
     this.groups.toArray().forEach((t) => {
       t.toggle.subscribe((i) => {
-        this.openGroup(t, i);
+        this.openGroup(t);
       });
     });
   }
-  openGroup(group: any, i: any) {
+  openGroup(group: any) {
     this.groups.toArray().forEach((t) => (t.opened = false));
     group.opened = true;
   }

@@ -9,7 +9,7 @@ import { WrapperHouseModelsComponent } from "./components/wrapper-house-models/w
 import { HomeComponent } from "./home.component";
 import { HouseListingComponent } from "./pages/house-listing/house-listing.component";
 import { HouseManagementComponent } from "./pages/house-management/house-management.component";
-import { HouseListingService } from "./services/house-listing.service";
+import { HouseListingService } from "./services/api/house-listing.service";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },

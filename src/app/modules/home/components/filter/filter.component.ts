@@ -21,19 +21,25 @@ import { Filter } from "src/app/shared/models/filter";
 })
 export class FilterComponent implements OnInit, OnDestroy {
   @Input()
-  set filter(filter: Filter) {
+  set filter(filter: Filter | any) {
     this.formGroup.setValue(filter, { emitEvent: false });
   }
 
   @Output()
   filterUpdate: EventEmitter<Filter> = new EventEmitter();
 
+  blockNumberValues = ["A","B", "C", "D", "001", "002"];
+  landNumberValues = ["riverside"];
+
+  minPriceValues = [1000000000, 2000000000, 3000000000];
+
+  maxPriceValues = [7000000000, 8000000000, 9000000000];
+
   formGroup: FormGroup = new FormGroup({
-    search: new FormControl(),
-    category: new FormGroup({
-      isBusiness: new FormControl(),
-      isPrivate: new FormControl(),
-    }),
+    blockNumber: new FormControl(),
+    landNumber: new FormControl(),
+    minPrice: new FormControl(),
+    maxPrice: new FormControl(),
   });
 
   private unsubscribe$ = new Subject();
@@ -41,21 +47,36 @@ export class FilterComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
-    this.formGroup.controls["search"].valueChanges
+    this.formGroup.controls["blockNumber"].valueChanges
       .pipe(takeUntil(this.unsubscribe$), debounceTime(350))
       .subscribe((value) => {
         this.filterUpdate.emit({
           ...this.formGroup.value,
-          search: value,
+          blockNumber: value,
         });
       });
-
-    this.formGroup.controls["category"].valueChanges
-      .pipe(takeUntil(this.unsubscribe$))
+    this.formGroup.controls["landNumber"].valueChanges
+      .pipe(takeUntil(this.unsubscribe$), debounceTime(350))
       .subscribe((value) => {
         this.filterUpdate.emit({
           ...this.formGroup.value,
-          category: value,
+          landNumber: value,
+        });
+      });
+    this.formGroup.controls["minPrice"].valueChanges
+      .pipe(takeUntil(this.unsubscribe$), debounceTime(350))
+      .subscribe((value) => {
+        this.filterUpdate.emit({
+          ...this.formGroup.value,
+          minPrice: value,
+        });
+      });
+    this.formGroup.controls["maxPrice"].valueChanges
+      .pipe(takeUntil(this.unsubscribe$), debounceTime(350))
+      .subscribe((value) => {
+        this.filterUpdate.emit({
+          ...this.formGroup.value,
+          maxPrice: value,
         });
       });
   }

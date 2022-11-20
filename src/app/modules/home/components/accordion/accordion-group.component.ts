@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, AfterViewInit } from "@angular/core";
 
 @Component({
   selector: "group",
@@ -24,4 +24,6 @@ export class AccordionGroupComponent {
   @Input() title: any = "";
   @Input() id: Number | undefined;
   @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
+
+
 }

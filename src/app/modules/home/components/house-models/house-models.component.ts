@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { House } from "src/app/shared/models/house";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
 
 @Component({

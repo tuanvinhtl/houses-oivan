@@ -1,8 +1,8 @@
 export interface Filter {
-    search: string;
-    category: {
-      isBusiness: boolean;
-      isPrivate: boolean;
-    };
+    blockNumber: string;
+    landNumber: string;
+    minPrice: number;
+    maxPrice: number;
   }
+  
   
