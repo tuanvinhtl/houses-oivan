@@ -22,16 +22,20 @@
           <th scope="col">Block Number</th>
           <th scope="col">Land Number</th>
           <th scope="col">Price</th>
-          <th scope="col">Status</th>
+          <ng-container [ngTemplateOutlet]="thRef"></ng-container>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of houseModels?.houses">
+        <tr *ngFor="let item of houseModels?.houses ; index as i">
           <td>{{ item.attributes.house_number }}</td>
           <td>{{ item.attributes.block_number }}</td>
           <td>{{ item.attributes.land_number }}</td>
           <td>{{ item.attributes.price }}</td>
-          <td>Edit</td>
+          <ng-container
+            [ngTemplateOutlet]="tdRef"
+            [ngTemplateOutletContext]="{ $implicit: item, index: i }"
+          >
+          </ng-container>
         </tr>
       </tbody>
     </table>

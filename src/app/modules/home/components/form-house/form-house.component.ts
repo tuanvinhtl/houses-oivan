@@ -8,11 +8,11 @@ export enum SUBMIT_TYPE {
 }
 
 @Component({
-  selector: "app-house-create",
-  templateUrl: "./house-create.component.html",
-  styleUrls: ["./house-create.component.scss"],
+  selector: "app-form-house",
+  templateUrl: "./form-house.component.html",
+  styleUrls: ["./form-house.component.scss"],
 })
-export class HouseCreateComponent implements OnInit {
+export class FormHouseComponent implements OnInit {
   @Input() houseModels = [];
   @Input() houseStatus = [];
   @Input() houseTypes = [];

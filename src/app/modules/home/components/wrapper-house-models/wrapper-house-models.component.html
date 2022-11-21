@@ -15,7 +15,6 @@
             type="button"
             class="btn btn-light align-self-center"
             routerLink="house-management"
-            [state]="{ id:100 , name:'Maya'}"
             >Create new house</a
           >
         </div>
@@ -32,8 +31,22 @@
 </div>
 
 <ng-template #accordionTemplate let-item>
-  <app-house-models [houseModels]="item"></app-house-models>
+  <app-house-models [houseModels]="item" [thRef]="thRef" [tdRef]="tdRef">
+  </app-house-models>
 </ng-template>
 <ng-template #itemLabel let-item>
   {{ "House model " + item.id }}
+</ng-template>
+
+<ng-template #itemLabel let-item>
+  {{ "House model " + item.id }}
+</ng-template>
+
+<ng-template #thRef let-item>
+  <th scope="col">Action</th>
+</ng-template>
+<ng-template #tdRef let-item>
+  <td>
+    <a [routerLink]="'house-management/update/'+item.id">Edit</a>
+  </td>
 </ng-template>

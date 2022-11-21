@@ -1,9 +1,9 @@
-<app-house-create
+<app-form-house
   [houseModels]="(filterSource$ | async)?.model"
   [houseStatus]="(filterSource$ | async)?.status"
   [houseTypes]="(filterSource$ | async)?.houseType"
-  [id]="(metaData$ | async)?.id"
+  [id]="id$ | async"
   [metaData]="(metaData$ | async)?.attributes"
   (submited)="submited($event)"
 >
-</app-house-create>
+</app-form-house>

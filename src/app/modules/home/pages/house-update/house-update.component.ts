@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { map, mergeMap, Observable } from "rxjs";
+import { map, mergeMap, Observable, of } from "rxjs";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
-import { SUBMIT_TYPE } from "../../components/house-create/house-create.component";
+import { SUBMIT_TYPE } from "../../components/form-house/form-house.component";
 import { HouseListingStateService } from "../../services/house-listing-state.service";
 @Component({
   selector: "app-house-update",
@@ -14,13 +14,18 @@ export class HouseUpdateComponent implements OnInit {
     this.houseListingStateService.houseListing$;
   filterSource$: Observable<any> = this.houseListingStateService.filterSource$;
   metaData$: Observable<any>;
+  id$: Observable<any>;
+
   constructor(
     private houseListingStateService: HouseListingStateService,
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.metaData$ = this.route.params.pipe(
-      mergeMap(({ id }) => this.houseListingStateService.loadById(id))
+      mergeMap(({ id }) => {
+        this.id$ = of(id);
+        return this.houseListingStateService.loadById(id);
+      })
     );
   }
   submited(_$event: any) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
-import { SUBMIT_TYPE } from "../../components/house-create/house-create.component";
+import { SUBMIT_TYPE } from "../../components/form-house/form-house.component";
 import { HouseListingStateService } from "../../services/house-listing-state.service";
 
 @Component({
