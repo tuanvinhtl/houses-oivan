@@ -5,7 +5,7 @@ import { StateService } from "src/app/shared/store/state.service";
 import { Filter } from "src/app/shared/models/filter";
 import { HouseListingService } from "./api/house-listing.service";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
-import { IHouse } from "src/app/shared/models/house";
+import { HouseRequest, IAttributes, IHouse } from "src/app/shared/models/house";
 
 interface HouseModelsState {
   houseModels: HouseModelsCombiner[];
@@ -129,6 +129,29 @@ export class HouseListingStateService extends StateService<HouseModelsState> {
       .getHouseModels()
       .subscribe((houseModels) => this.setState({ houseModels }));
   }
+
+  createHouse(attributes: IAttributes) {
+    const payload = {
+      data: {
+        type: "houses",
+        attributes: attributes,
+      },
+    } as HouseRequest;
+    return this.apiService.create(payload);
+  }
+  uppdateHouse(attributes: IAttributes, id?: Number) {
+    const payload = {
+      data: {
+        id: id,
+        type: "houses",
+        attributes: attributes,
+      },
+    } as HouseRequest;
+    return this.apiService.update(payload);
+  }
+  loadById(id: number) {
+    return this.apiService.get(id);
+  }
 }
 
 function getTodosFiltered(
@@ -157,7 +180,7 @@ function filterDeeper(item: HouseModelsCombiner, filter: Filter) {
     } else if (filter.blockNumber && filter.landNumber) {
       return (
         x.attributes.block_number === filter.blockNumber &&
-        x.attributes.land_number === filter.landNumber 
+        x.attributes.land_number === filter.landNumber
       );
     }
     return x;

@@ -1,7 +1,12 @@
 import { Injectable } from "@angular/core";
 import { forkJoin, map, Observable } from "rxjs";
 import { ApiService } from "src/app/core/services/api.service";
-import { House } from "src/app/shared/models/house";
+import {
+  DataPayload,
+  House,
+  HouseRequest,
+  HouseResponse,
+} from "src/app/shared/models/house";
 import {
   HouseModels,
   HouseModelsCombiner,
@@ -10,7 +15,6 @@ import {
 @Injectable({ providedIn: "root" })
 export class HouseListingService {
   constructor(private apiService: ApiService<any, any>) {}
-
   getHouseModels(): Observable<HouseModelsCombiner[]> {
     return forkJoin({
       houseModels: this.apiService.get("/house_models"),
@@ -34,15 +38,15 @@ export class HouseListingService {
     );
   }
 
-  //   createTodo(todo: Todo): Observable<Todo> {
-  //     return this.apiService.post<Todo>(apiUrl, todo);
-  //   }
+  create(house: HouseRequest): Observable<HouseResponse> {
+    return this.apiService.post("/houses", house);
+  }
 
-  //   updateTodo(todo: Todo): Observable<Todo> {
-  //     return this.apiService.put<Todo>(apiUrl + todo.id, todo);
-  //   }
+  update(house: HouseRequest): Observable<HouseResponse> {
+    return this.apiService.patch("/houses/" + house.data.id, house);
+  }
 
-  //   deleteTodo(todo: Todo): Observable<void> {
-  //     return this.apiService.delete<void>(apiUrl + todo.id);
-  //   }
+  get(id: number): Observable<HouseResponse> {
+    return this.apiService.get("/houses/" + id);
+  }
 }

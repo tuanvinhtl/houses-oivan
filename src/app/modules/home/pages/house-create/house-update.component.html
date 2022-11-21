@@ -2,6 +2,8 @@
   [houseModels]="(filterSource$ | async)?.model"
   [houseStatus]="(filterSource$ | async)?.status"
   [houseTypes]="(filterSource$ | async)?.houseType"
+  [id]="(metaData$ | async)?.id"
+  [metaData]="(metaData$ | async)?.attributes"
   (submited)="submited($event)"
 >
 </app-house-create>

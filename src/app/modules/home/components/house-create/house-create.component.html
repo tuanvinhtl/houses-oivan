@@ -3,10 +3,15 @@
     <div class="house-crud">
       <div class="action-bar d-flex flex-row justify-content-between">
         <div class="d-flex">
-          <H1>House ID</H1>
+          <H1>House ID {{id}}</H1>
         </div>
         <div class="action-btn d-flex">
-          <button type="button" class="btn btn-light align-self-center" (click)="submit()">
+          <button
+            type="button"
+            class="btn btn-light align-self-center"
+            (click)="submit()"
+            [disabled]="formGroup.invalid"
+          >
             Create / Update
           </button>
         </div>
@@ -19,13 +24,16 @@
               <input
                 type="email"
                 class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                formControlName="houseNumber"
+                placeholder="House number"
+                formControlName="house_number"
               />
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
+              <small
+                class="form-text text-muted"
+                *ngIf="
+                  houseNumber?.invalid &&
+                  (houseNumber?.dirty || houseNumber?.touched)
+                "
+                >House number invalid.</small
               >
             </div>
           </div>
@@ -35,56 +43,78 @@
               <input
                 type="text"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                formControlName="blockNumber"
+                placeholder="Block number"
+                formControlName="block_number"
               />
+              <small
+                class="form-text text-muted"
+                *ngIf="
+                  blockNumber?.invalid &&
+                  (blockNumber?.dirty || blockNumber?.touched)
+                "
+                >Block number invalid.</small
+              >
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="exampleInputPassword1">Land number</label>
               <input
-                type="password"
+                type="text"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                formControlName="landNumber"
+                placeholder="Land number"
+                formControlName="land_number"
               />
+              <small
+                class="form-text text-muted"
+                *ngIf="
+                  landNumber?.invalid &&
+                  (landNumber?.dirty || landNumber?.touched)
+                "
+                >Land number invalid.</small
+              >
             </div>
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="exampleInputPassword1">House type</label>
+              <label for="exampleInputPassword1">House model</label>
               <select
                 class="form-select form-control"
-                formControlName="houseType"
+                formControlName="model"
                 aria-label="Default select example"
-                aria-placeholder="Land Number"
               >
-                <option *ngFor="let item of houseTypes" [value]="item">
+                <option *ngFor="let item of houseModels" [value]="item">
                   {{ item }}
                 </option>
               </select>
+              <small
+                class="form-text text-muted"
+                *ngIf="model?.invalid && (model?.dirty || model?.touched)"
+                >House model invalid.</small
+              >
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="exampleInputEmail1">House model</label>
+              <label for="exampleInputEmail1">House type</label>
               <select
                 class="form-select form-control"
-                formControlName="houseModel"
+                formControlName="house_type"
                 aria-label="Default select example"
-                aria-placeholder="Land Number"
+                aria-placeholder="House type"
               >
-                <option *ngFor="let item of houseModels" [value]="item">
+                <option *ngFor="let item of houseTypes" [value]="item">
                   {{ item }}
                 </option>
               </select>
-              <small id="emailHelp" class="form-text text-muted"
-                >We'll never share your email with anyone else.</small
+              <small
+                class="form-text text-muted"
+                *ngIf="
+                  houseType?.invalid && (houseType?.dirty || houseType?.touched)
+                "
+                >House type invalid.</small
               >
             </div>
           </div>
@@ -92,12 +122,16 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Price</label>
               <input
-                type="password"
+                type="number"
                 class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Password"
-                formControlName="housePrice"
+                placeholder="Price"
+                formControlName="price"
               />
+              <small
+                class="form-text text-muted"
+                *ngIf="price?.invalid && (price?.dirty || price?.touched)"
+                >Price invalid.</small
+              >
             </div>
           </div>
           <div class="col">
