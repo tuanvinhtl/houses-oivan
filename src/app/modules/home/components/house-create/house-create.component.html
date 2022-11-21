@@ -1,0 +1,119 @@
+<div class="card">
+  <div class="card-body">
+    <div class="house-crud">
+      <div class="action-bar d-flex flex-row justify-content-between">
+        <div class="d-flex">
+          <H1>House ID</H1>
+        </div>
+        <div class="action-btn d-flex">
+          <button type="button" class="btn btn-light align-self-center">
+            Create / Update
+          </button>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">House Number</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+              <small id="emailHelp" class="form-text text-muted"
+                >We'll never share your email with anyone else.</small
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Block number</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Land number</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputPassword1">House type</label>
+              <select
+                class="form-select form-control"
+                formControlName="landNumber"
+                aria-label="Default select example"
+                aria-placeholder="Land Number"
+              >
+                <option *ngFor="let item of []" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">House model</label>
+              <select
+                class="form-select form-control"
+                formControlName="landNumber"
+                aria-label="Default select example"
+                aria-placeholder="Land Number"
+              >
+                <option *ngFor="let item of []" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+              <small id="emailHelp" class="form-text text-muted"
+                >We'll never share your email with anyone else.</small
+              >
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Price</label>
+              <input
+                type="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Status</label>
+              <select
+                class="form-select form-control"
+                formControlName="landNumber"
+                aria-label="Default select example"
+                aria-placeholder="Land Number"
+              >
+                <option *ngFor="let item of []" [value]="item">
+                  {{ item }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

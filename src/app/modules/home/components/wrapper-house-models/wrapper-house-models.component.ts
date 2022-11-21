@@ -13,15 +13,11 @@ export class WrapperHouseModelsComponent {
   houseModelsCombiner: HouseModelsCombiner[] = [];
   houseListing$: Observable<HouseModelsCombiner[]> = this.houseListingStateService.houseListing$;
   filter$: Observable<Filter> = this.houseListingStateService.filter$;
-  selecteditem: Number = 0
-  constructor(private houseListingStateService: HouseListingStateService) {}
-  
+  filterSource$: Observable<Filter> = this.houseListingStateService.filterSource$;
+  constructor(private houseListingStateService: HouseListingStateService) {
+  }
 
   onFilterUpdate(filter: Filter) {
     this.houseListingStateService.updateFilter(filter);
-  }
-
-  selectedRow(item: HouseModelsCombiner) {
-    this.selecteditem = item.id
   }
 }

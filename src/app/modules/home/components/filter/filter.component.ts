@@ -25,11 +25,11 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.formGroup.setValue(filter, { emitEvent: false });
   }
 
+  @Input() blockNumberData: any = [];
+  @Input() landNumberData: any = [];
+
   @Output()
   filterUpdate: EventEmitter<Filter> = new EventEmitter();
-
-  blockNumberValues = ["A","B", "C", "D", "001", "002"];
-  landNumberValues = ["riverside"];
 
   minPriceValues = [1000000000, 2000000000, 3000000000];
 

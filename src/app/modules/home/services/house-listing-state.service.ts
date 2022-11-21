@@ -44,6 +44,60 @@ export class HouseListingStateService extends StateService<HouseModelsState> {
 
   filter$: Observable<Filter> = this.select((state) => state.filter);
 
+  filterSource$: Observable<any> = this.select((state) => {
+    let fields: any[] = [];
+    let sources: any = {};
+    state.houseModels.map((x) => {
+      x.houses.map((y) => {
+        fields.push(y.attributes);
+      });
+    });
+
+    const blockNumber = fields.reduce(function (r, a) {
+      r[a.block_number] = r[a.block_number] || [];
+      r[a.block_number].push(a);
+      return r;
+    }, Object.create(null));
+
+    const houseNumber = fields.reduce(function (r, a) {
+      r[a.house_number] = r[a.house_number] || [];
+      r[a.house_number].push(a);
+      return r;
+    }, Object.create(null));
+
+    const landNumber = fields.reduce(function (r, a) {
+      r[a.land_number] = r[a.land_number] || [];
+      r[a.land_number].push(a);
+      return r;
+    }, Object.create(null));
+
+    const status = fields.reduce(function (r, a) {
+      r[a.status] = r[a.status] || [];
+      r[a.status].push(a);
+      return r;
+    }, Object.create(null));
+
+    const model = fields.reduce(function (r, a) {
+      r[a.model] = r[a.model] || [];
+      r[a.model].push(a);
+      return r;
+    }, Object.create(null));
+
+    const houseType = fields.reduce(function (r, a) {
+      r[a.house_type] = r[a.house_type] || [];
+      r[a.house_type].push(a);
+      return r;
+    }, Object.create(null));
+
+    sources["blockNumber"] = Object.keys(blockNumber);
+    sources["houseNumber"] = Object.keys(houseNumber);
+    sources["landNumber"] = Object.keys(landNumber);
+    sources["status"] = Object.keys(status);
+    sources["model"] = Object.keys(model);
+    sources["houseType"] = Object.keys(houseType);
+    return sources;
+  });
+
   constructor(private apiService: HouseListingService) {
     super(initialState);
     this.load();
@@ -81,18 +135,33 @@ function getTodosFiltered(
   todos: HouseModelsCombiner[],
   filter: Filter
 ): HouseModelsCombiner[] {
-  if(!filter.blockNumber && !filter.landNumber && !filter.maxPrice && !filter.minPrice){
-    return todos
+  if (
+    !filter.blockNumber &&
+    !filter.landNumber &&
+    !filter.maxPrice &&
+    !filter.minPrice
+  ) {
+    return todos;
   }
-  const filtesr = todos.filter((item: HouseModelsCombiner) => filterDeeper(item,filter));
-  console.log(filtesr)
+  const filtesr = todos.filter((item: HouseModelsCombiner) =>
+    filterDeeper(item, filter)
+  );
+  console.log(filtesr);
   return filtesr;
 }
 
 function filterDeeper(item: HouseModelsCombiner, filter: Filter) {
-  const result = item.houses.filter(
-    (x) => x.attributes.block_number === filter.blockNumber
-  );
+  const result = item.houses.filter((x) => {
+    if (filter.blockNumber) {
+      return x.attributes.block_number === filter.blockNumber;
+    } else if (filter.blockNumber && filter.landNumber) {
+      return (
+        x.attributes.block_number === filter.blockNumber &&
+        x.attributes.land_number === filter.landNumber 
+      );
+    }
+    return x;
+  });
   if (result.length) {
     return true;
   }
