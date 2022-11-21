@@ -1,3 +1,8 @@
 <div class="container">
-    <app-house-create></app-house-create>
+  <app-house-create
+    [houseModels]="(filterSource$ | async)?.model"
+    [houseStatus]="(filterSource$ | async)?.status"
+    [houseTypes]="(filterSource$ | async)?.houseType"
+  >
+  </app-house-create>
 </div>

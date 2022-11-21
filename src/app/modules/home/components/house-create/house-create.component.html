@@ -6,22 +6,23 @@
           <H1>House ID</H1>
         </div>
         <div class="action-btn d-flex">
-          <button type="button" class="btn btn-light align-self-center">
+          <button type="button" class="btn btn-light align-self-center" (click)="submit()">
             Create / Update
           </button>
         </div>
       </div>
-      <form>
+      <form [formGroup]="formGroup">
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="exampleInputEmail1">House Number</label>
+              <label for="exampleInputEmail1">House number</label>
               <input
                 type="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                formControlName="houseNumber"
               />
               <small id="emailHelp" class="form-text text-muted"
                 >We'll never share your email with anyone else.</small
@@ -32,10 +33,11 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Block number</label>
               <input
-                type="password"
+                type="text"
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                formControlName="blockNumber"
               />
             </div>
           </div>
@@ -47,6 +49,7 @@
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                formControlName="landNumber"
               />
             </div>
           </div>
@@ -55,11 +58,11 @@
               <label for="exampleInputPassword1">House type</label>
               <select
                 class="form-select form-control"
-                formControlName="landNumber"
+                formControlName="houseType"
                 aria-label="Default select example"
                 aria-placeholder="Land Number"
               >
-                <option *ngFor="let item of []" [value]="item">
+                <option *ngFor="let item of houseTypes" [value]="item">
                   {{ item }}
                 </option>
               </select>
@@ -72,11 +75,11 @@
               <label for="exampleInputEmail1">House model</label>
               <select
                 class="form-select form-control"
-                formControlName="landNumber"
+                formControlName="houseModel"
                 aria-label="Default select example"
                 aria-placeholder="Land Number"
               >
-                <option *ngFor="let item of []" [value]="item">
+                <option *ngFor="let item of houseModels" [value]="item">
                   {{ item }}
                 </option>
               </select>
@@ -93,6 +96,7 @@
                 class="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                formControlName="housePrice"
               />
             </div>
           </div>
@@ -104,8 +108,9 @@
                 formControlName="landNumber"
                 aria-label="Default select example"
                 aria-placeholder="Land Number"
+                formControlName="status"
               >
-                <option *ngFor="let item of []" [value]="item">
+                <option *ngFor="let item of houseStatus" [value]="item">
                   {{ item }}
                 </option>
               </select>
