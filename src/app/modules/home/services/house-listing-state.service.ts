@@ -100,7 +100,6 @@ export class HouseListingStateService extends StateService<HouseModelsState> {
 
   constructor(private apiService: HouseListingService) {
     super(initialState);
-    this.load();
   }
 
   selectTodo(todo: HouseModelsCombiner) {

@@ -7,6 +7,7 @@ import {
   HouseModels,
   HouseModelsCombiner,
 } from "src/app/shared/models/house-models";
+import { InfratructureComponent } from "./helper/infratructure.base";
 import { HouseListingStateService } from "./services/house-listing-state.service";
 
 @Component({
@@ -14,14 +15,11 @@ import { HouseListingStateService } from "./services/house-listing-state.service
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent {
-  houseListing$: Observable<HouseModelsCombiner[]> =
-    this.houseListingStateService.houseListing$;
-  filterSource$: Observable<any> = this.houseListingStateService.filterSource$;
-  filter$: Observable<Filter> = this.houseListingStateService.filter$;
-
-  constructor(private houseListingStateService: HouseListingStateService) {}
-  onFilterUpdate(filter: Filter) {
-    this.houseListingStateService.updateFilter(filter);
+export class HomeComponent extends InfratructureComponent {
+  constructor(
+    protected override houseListingStateService: HouseListingStateService
+  ) {
+    super(houseListingStateService);
+    this.houseListingStateService.load();
   }
 }
