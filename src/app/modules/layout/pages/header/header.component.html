@@ -1,5 +1,6 @@
 <form #f="ngForm" class="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">Oivan Vietnam</h5>
+    <small *ngIf="msgError" class="my-0 my-md-0 mr-md-3 text-muted">{{msgError}}</small>
     <nav class="my-2 my-md-0 mr-md-3">
       <div class="input-group" *ngIf="!isAuthenticated">
         <input type="text" name="username" #username="ngModel" ngModel required class="form-control mr-md-3" placeholder="Username" aria-label="Username">

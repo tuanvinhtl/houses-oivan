@@ -1,5 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { Filter } from "src/app/shared/models/filter";
+import { Component } from "@angular/core";
 import { InfratructureComponent } from "../../../helper/infratructure.base";
 import { HouseListingStateService } from "../../../services/house-listing-state.service";
 

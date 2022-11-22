@@ -1,5 +1,4 @@
-@import "../../../../assets/scss/boostrap/functions";
-@import "../../../../assets/scss/boostrap/variables";
+
 :host {
   %default-toast {
     position: absolute;
@@ -26,16 +25,16 @@
   }
   .success-toast {
     @extend %default-toast;
-    border-left: 6px solid $success;
+    border-left: 6px solid #28a745;
   }
 
   .warning-toast {
     @extend %default-toast;
-    border-left: 6px solid $warning;
+    border-left: 6px solid #ffc107;
   }
 
   .danger-toast {
     @extend %default-toast;
-    border-left: 6px solid $danger;
+    border-left: 6px solid #dc3545;
   }
 }

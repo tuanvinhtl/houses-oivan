@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { mergeMap, Observable, of } from "rxjs";
-import { HouseModelsCombiner } from "src/app/shared/models/house-models";
 import {
   ToastService,
   TOAST_STATE,

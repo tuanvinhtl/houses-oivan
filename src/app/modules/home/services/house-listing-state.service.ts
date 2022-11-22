@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { map, shareReplay } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { StateService } from "src/app/shared/store/state.service";
 import { Filter } from "src/app/shared/models/filter";
 import { HouseListingService } from "./api/house-listing.service";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
-import { HouseRequest, IAttributes, IHouse } from "src/app/shared/models/house";
+import { HouseRequest, IAttributes } from "src/app/shared/models/house";
 
 interface HouseModelsState {
   houseModels: HouseModelsCombiner[];

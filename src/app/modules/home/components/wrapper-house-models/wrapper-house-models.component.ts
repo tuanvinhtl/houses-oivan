@@ -2,14 +2,12 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnInit,
   Output,
   TemplateRef,
 } from "@angular/core";
 import { Observable } from "rxjs";
 import { Filter } from "src/app/shared/models/filter";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
-import { HouseListingStateService } from "../../services/house-listing-state.service";
 
 @Component({
   selector: "app-wrapper-house-models",

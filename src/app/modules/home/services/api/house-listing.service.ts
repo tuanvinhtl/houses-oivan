@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { forkJoin, map, Observable } from "rxjs";
 import { ApiService } from "src/app/core/services/api.service";
 import {
-  DataPayload,
   House,
   HouseRequest,
   HouseResponse,

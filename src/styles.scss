@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/scss/boostrap/bootstrap.scss";
-app-root {   z-index: 1; }  
-app-toast, .toast-class {   z-index: 2; }
+app-root {
+  z-index: 1;
+}
+app-toast,
+.toast-class {
+  z-index: 2;
+}
+.text-muted {
+  color: #dc3545 !important;
+}

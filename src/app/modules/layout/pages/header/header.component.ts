@@ -9,6 +9,7 @@ import { AuthRequest, AuthResponse } from "src/app/shared/models/auth-model";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent {
+  msgError = "";
   constructor(
     private apiService: ApiService<AuthRequest, AuthResponse>,
     private router: Router
@@ -25,12 +26,19 @@ export class HeaderComponent {
           attributes: f.value,
         },
       })
-      .subscribe((auth: AuthResponse) => {
-        if (auth) {
-          localStorage.setItem("authentication", auth.attributes.token) as any;
-          localStorage.setItem("_USER_INFO", JSON.stringify(auth));
-          this.router.navigate(["/house-management"]);
-        }
+      .subscribe({
+        next: (auth: AuthResponse) => {
+          if (auth) {
+            localStorage.setItem(
+              "authentication",
+              auth.attributes.token
+            ) as any;
+            localStorage.setItem("_USER_INFO", JSON.stringify(auth));
+            this.router.navigate(["/house-management"]);
+            this.msgError = "";
+          }
+        },
+        error: ({ error }) => (this.msgError = error.errors[0]?.detail),
       });
   }
   signOut() {
