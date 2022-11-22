@@ -169,7 +169,6 @@ function getTodosFiltered(
   const filtesr = todos.filter((item: HouseModelsCombiner) =>
     filterDeeper(item, filter)
   );
-  console.log(filtesr);
   return filtesr;
 }
 
@@ -182,7 +181,26 @@ function filterDeeper(item: HouseModelsCombiner, filter: Filter) {
         x.attributes.block_number === filter.blockNumber &&
         x.attributes.land_number === filter.landNumber
       );
+    } else if (filter.blockNumber && filter.landNumber && filter.minPrice) {
+      return (
+        x.attributes.block_number === filter.blockNumber &&
+        x.attributes.land_number === filter.landNumber &&
+        filter.minPrice > x.attributes.price
+      );
+    } else if (
+      filter.blockNumber &&
+      filter.landNumber &&
+      filter.minPrice &&
+      filter.maxPrice
+    ) {
+      return (
+        x.attributes.block_number === filter.blockNumber &&
+        x.attributes.land_number === filter.landNumber &&
+        filter.minPrice > x.attributes.price &&
+        filter.maxPrice < x.attributes.price
+      );
     }
+
     return x;
   });
   if (result.length) {

@@ -13,9 +13,6 @@
       cursor: pointer;
       text-align: left;
     }
-    &--container {
-      padding: 10px;
-    }
   }
   .accordion-item:first-child{
     border-top: $card-border-width solid $card-border-color;

@@ -2,8 +2,8 @@
   <div class="accordion-item" *ngFor="let item of items; index as i">
     <div
       class="accordion-item--title"
-      [ngClass]="{ active: selected === item.id }"
-      (click)="itemSelected(item)"
+      [ngClass]="{ active: selected === i }"
+      (click)="itemSelected(i)"
     >
       <ng-container
         [ngTemplateOutlet]="itemLabelRef"
@@ -11,7 +11,10 @@
       >
       </ng-container>
     </div>
-    <div class="accordion-item--container" *ngIf="selected === item.id">
+    <div
+      class="accordion-item--container"
+      [@contentExpansion]="selected === i ? 'expanded' : 'collapsed'"
+    >
       <ng-container
         [ngTemplateOutlet]="accordionTemplateItemRef"
         [ngTemplateOutletContext]="{ $implicit: item, index: i }"
