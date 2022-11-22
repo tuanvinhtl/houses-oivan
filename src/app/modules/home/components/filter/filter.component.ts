@@ -38,7 +38,7 @@ export class FilterComponent implements OnInit, OnDestroy {
   formGroup: FormGroup = new FormGroup({
     blockNumber: new FormControl(),
     landNumber: new FormControl(),
-    minPrice: new FormControl(),
+    minPrice: new FormControl(null),
     maxPrice: new FormControl(),
   });
 
