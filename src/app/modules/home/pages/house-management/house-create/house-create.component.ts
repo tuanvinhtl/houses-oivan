@@ -22,16 +22,16 @@ export class HouseCreateComponent {
   ) {}
   submited(_$event: any) {
     if (_$event.submit_type === SUBMIT_TYPE.CREATE) {
-      this.houseListingStateService.createHouse(_$event.value).subscribe(
-        (x) => {
+      this.houseListingStateService.createHouse(_$event.value).subscribe({
+        complete: () => {
           this.toast.showToast(TOAST_STATE.success, "look good :)");
           this.dismiss();
         },
-        ({ error }) => {
+        error: ({error}) => {
           this.toast.showToast(TOAST_STATE.danger, error.errors[0].title);
           this.dismiss();
-        }
-      );
+        },
+      });
     }
   }
   private dismiss(): void {

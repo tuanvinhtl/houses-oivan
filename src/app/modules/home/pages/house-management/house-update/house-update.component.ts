@@ -38,16 +38,16 @@ export class HouseUpdateComponent implements OnInit {
     if (_$event.submit_type === SUBMIT_TYPE.UPDATE) {
       this.houseListingStateService
         .uppdateHouse(_$event.value, _$event.id)
-        .subscribe(
-          (x) => {
+        .subscribe({
+          complete: () => {
             this.toast.showToast(TOAST_STATE.success, "look good :)");
             this.dismiss();
           },
-          (err) => {
-            this.toast.showToast(TOAST_STATE.danger, err[0].detail);
+          error: ({error}) => {
+            this.toast.showToast(TOAST_STATE.danger, error.errors[0].title);
             this.dismiss();
-          }
-        );
+          },
+        });
     }
   }
   private dismiss(): void {
