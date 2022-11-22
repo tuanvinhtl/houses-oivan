@@ -1,0 +1,23 @@
+<app-wrapper-house-models
+  [actionRef]="actionRef"
+  [thRef]="thRef"
+  [tdRef]="tdRef"
+  (onFilterUpdate)="onFilterUpdate($event)"
+  [houseListing]="houseListing$"
+  [filterSource]="filterSource$"
+  [filter]="filter$"
+></app-wrapper-house-models>
+
+<ng-template #actionRef let-item>
+  <a type="button" class="btn btn-light align-self-center" routerLink="create"
+    >Create new house</a
+  >
+</ng-template>
+<ng-template #thRef let-item>
+  <th scope="col">Action</th>
+</ng-template>
+<ng-template #tdRef let-item>
+  <td>
+    <a [routerLink]="'update/' + item.id">Edit</a>
+  </td>
+</ng-template>

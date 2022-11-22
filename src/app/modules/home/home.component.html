@@ -1,1 +1,6 @@
-<app-wrapper-house-models></app-wrapper-house-models>
+<app-wrapper-house-models
+  (onFilterUpdate)="onFilterUpdate($event)"
+  [houseListing]="houseListing$"
+  [filterSource]="filterSource$"
+  [filter]="filter$"
+></app-wrapper-house-models>

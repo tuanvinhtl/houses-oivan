@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ApiService } from "src/app/core/services/api.service";
 import { AuthRequest, AuthResponse } from "src/app/shared/models/auth-model";
 @Component({
@@ -8,7 +9,10 @@ import { AuthRequest, AuthResponse } from "src/app/shared/models/auth-model";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent {
-  constructor(private apiService: ApiService<AuthRequest, AuthResponse>) {}
+  constructor(
+    private apiService: ApiService<AuthRequest, AuthResponse>,
+    private router: Router
+  ) {}
 
   signIn(f: NgForm) {
     if (f.invalid) {
@@ -23,16 +27,15 @@ export class HeaderComponent {
       })
       .subscribe((auth: AuthResponse) => {
         if (auth) {
-          localStorage.setItem(
-            "authentication",
-            auth.attributes.token
-          ) as any;
+          localStorage.setItem("authentication", auth.attributes.token) as any;
           localStorage.setItem("_USER_INFO", JSON.stringify(auth));
+          this.router.navigate(["/house-management"]);
         }
       });
   }
   signOut() {
     localStorage.clear();
+    this.router.navigate(["/"]);
   }
 
   get isAuthenticated() {

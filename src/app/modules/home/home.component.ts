@@ -14,13 +14,14 @@ import { HouseListingStateService } from "./services/house-listing-state.service
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
-  houseModelsCombiner: HouseModelsCombiner[] = [];
-  houseListing$: Observable<HouseModelsCombiner[]> = this.houseListingStateService.houseListing$;
+export class HomeComponent {
+  houseListing$: Observable<HouseModelsCombiner[]> =
+    this.houseListingStateService.houseListing$;
+  filterSource$: Observable<any> = this.houseListingStateService.filterSource$;
   filter$: Observable<Filter> = this.houseListingStateService.filter$;
 
   constructor(private houseListingStateService: HouseListingStateService) {}
-  ngOnInit(): void {
+  onFilterUpdate(filter: Filter) {
+    this.houseListingStateService.updateFilter(filter);
   }
-
 }

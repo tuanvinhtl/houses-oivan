@@ -5,21 +5,15 @@
         <app-filter
           class="f"
           [filter]="filter$ | async"
-          (filterUpdate)="onFilterUpdate($event)"
+          (filterUpdate)="onEmitFilter($event)"
           [blockNumberData]="(filterSource$ | async)?.blockNumber"
           [landNumberData]="(filterSource$ | async)?.landNumber"
         >
         </app-filter>
         <div class="action-btn d-flex">
-          <a
-            type="button"
-            class="btn btn-light align-self-center"
-            routerLink="house-management"
-            >Create new house</a
-          >
+          <ng-container [ngTemplateOutlet]="actionRef"> </ng-container>
         </div>
       </div>
-
       <accordion
         [items]="houseListing$ | async"
         [accordionTemplateItem]="accordionTemplate"
@@ -36,17 +30,4 @@
 </ng-template>
 <ng-template #itemLabel let-item>
   {{ "House model " + item.id }}
-</ng-template>
-
-<ng-template #itemLabel let-item>
-  {{ "House model " + item.id }}
-</ng-template>
-
-<ng-template #thRef let-item>
-  <th scope="col">Action</th>
-</ng-template>
-<ng-template #tdRef let-item>
-  <td>
-    <a [routerLink]="'house-management/update/'+item.id">Edit</a>
-  </td>
 </ng-template>

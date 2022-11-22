@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { map, mergeMap, Observable, of } from "rxjs";
+import { mergeMap, Observable, of } from "rxjs";
 import { HouseModelsCombiner } from "src/app/shared/models/house-models";
-import { SUBMIT_TYPE } from "../../components/form-house/form-house.component";
-import { HouseListingStateService } from "../../services/house-listing-state.service";
+import { SUBMIT_TYPE } from "../../../components/form-house/form-house.component";
+import { HouseListingStateService } from "../../../services/house-listing-state.service";
+
 @Component({
   selector: "app-house-update",
   templateUrl: "./house-update.component.html",
